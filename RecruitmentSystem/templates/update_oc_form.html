@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update OC Member</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #1e75ab;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        footer {
+            background-color: #1e75ab;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            margin-top: auto;
+        }
+        .content {
+            padding: 20px;
+            max-width: 800px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1;
+        }
+        header h1, footer p {
+            margin: 0;
+        }
+        .form-container {
+            text-align: center;
+        }
+        .form-container h2 {
+            color: #1e75ab;
+            margin-bottom: 20px;
+        }
+        .form-container label {
+            display: block;
+            margin-top: 10px;
+            color: #555;
+        }
+        .form-container input[type="text"],
+        .form-container input[type="email"],
+        .form-container input[type="file"],
+        .form-container select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1e75ab;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .form-container button:hover {
+            background-color: #165a8c;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Orientation Committee</h1>
+    </header>
+    <div class="content">
+        <div class="form-container">
+            <h2>Update OC Member</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Save changes</button>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Orientation Committee. All rights reserved.</p>
+    </footer>
+</body>
+</html>

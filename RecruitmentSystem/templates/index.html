@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orientation Committee</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Set minimum height to full viewport height */
+        }
+        header {
+            background-color: #1e75ab;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        footer {
+            background-color: #1e75ab;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            margin-top: auto; /* Push footer to bottom */
+            width: 100%; /* Ensure footer spans full width */
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .content {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+            flex: 1; /* Grow to take remaining space */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #1e75ab;
+            color: white;
+            font-size: 1.1em;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .logo {
+            display: block;
+            margin: 20px auto;
+        }
+        article {
+            margin: 20px auto;
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            border-radius: 8px;
+        }
+        button {
+            width: 200px;
+            height: 40px;
+            border-radius: 5px;
+            background-color: #1e75ab;
+            color: white;
+            font-weight: bold;
+            border: none;
+            margin: 10px 0;
+        }
+        button:hover {
+            background-color: #165a8c;
+            cursor: pointer;
+        }
+        a {
+            color: black;
+            text-decoration: none;
+        }
+        .notice {
+            margin: 20px 0;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    {% load static %}
+    <header>
+        <h1>Orientation Committee</h1>
+    </header>
+    <div class="content">
+        <h1>Application Status</h1>
+        <table>
+            <tr>
+                <th>Student Name</th>
+                <th>Student ID</th>
+                <th>Email</th>
+                <th>Status</th>
+            </tr>
+            {% for status in application_status %}
+            <tr>
+                <td>{{ status.student_application.name }}</td>
+                <td>{{ status.student_application.student_id }}</td>
+                <td>{{ status.student_application.email }}</td>
+                <td>{{ status.status }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <center>
+            <img src="{% static 'Logo OC.png' %}" alt="Logo OC" width="85px" height="80px" class="logo">
+        </center>
+        <article>
+            <center>
+                <button onclick="location.href='studentapplication'">SIGN UP TO BECOME AN OC</button>
+                <div class="notice">-------------------------------------</div>
+                <button onclick="location.href='login'">LOGIN</button>
+                <br><br>
+                <a>Don't have an account yet? Click<a href="studentapplication" style="color: blue;"> Here</a></a>
+            </center>
+        </article>
+    </div>
+    <footer>
+        <p>&copy; 2024 Orientation Committee. All rights reserved.</p>
+    </footer>
+</body>
+</html>

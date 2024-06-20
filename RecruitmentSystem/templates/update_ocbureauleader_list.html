@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update OC Bureau Leaders</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Set minimum height to full viewport height */
+        }
+        header {
+            background-color: #1e75ab;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        footer{
+            background-color: #1e75ab;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            margin-top: auto; /* Push footer to bottom */
+            width: 100%; /* Ensure footer spans full width */
+        }
+        header h1, footer p {
+            margin: 0;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .container h1 {
+            text-align: center;
+            color: #1e75ab;
+            margin-bottom: 20px;
+        }
+        .oc-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .oc-list li {
+            margin-bottom: 10px;
+            padding: 10px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .oc-list li a {
+            color: #1e75ab;
+            text-decoration: none;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .oc-list li a:hover {
+            text-decoration: underline;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #1e75ab;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .back-button {
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: #1e75ab;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            float: left;
+            width: 8%;
+            text-align: center;
+        }
+        .back-button:hover {
+            background-color: #165a8c;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            float: right;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Update OC Bureau Leaders</h1>
+    </header>
+    <a href="{% url 'oc_president_page' %}" class="back-button">Back to President Page</a>
+    <div class="container">
+        <ul class="oc-list">
+            {% for ocbureauleader in ocbureauleader_list %}
+            <li>
+                {{ ocbureauleader.ocbureauleadername }} - {{ ocbureauleader.ocbureauleaderbureau }} <a href="{% url 'update_ocbureauleader' ocbureauleader.pk %}">Update</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    <footer>
+        <p>&copy; 2024 Orientation Committee. All rights reserved.</p>
+    </footer>
+</body>
+</html>

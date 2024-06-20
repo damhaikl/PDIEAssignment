@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List of OC Bureau Leaders</title>
+</head>
+<body>
+    <h2>List of OC Bureau Leaders</h2>
+    <ul>
+        {% for oc_bureau_leader in oc_bureau_leaders %}
+            <li>{{ oc_bureau_leader.ocbureauleadername }} - <a href="{% url 'update_oc_bureau_leader' oc_bureau_leader.pk %}">Update</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Event</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header, footer {
+            background-color: #1e75ab;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        header h1, footer p {
+            margin: 0;
+        }
+        .form-container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .form-container h2 {
+            text-align: center;
+            color: #1e75ab;
+            margin-bottom: 20px;
+        }
+        .form-container label {
+            display: block;
+            margin-top: 10px;
+            color: #555;
+        }
+        .form-container input[type="text"],
+        .form-container input[type="date"],
+        .form-container input[type="time"],
+        .form-container input[type="number"],
+        .form-container textarea,
+        .form-container select {
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #333;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .form-container input[type="text"]:focus,
+        .form-container input[type="date"]:focus,
+        .form-container input[type="time"]:focus,
+        .form-container input[type="number"]:focus,
+        .form-container textarea:focus,
+        .form-container select:focus {
+            border-color: #1e75ab;
+        }
+        .form-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1e75ab;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background-color 0.2s;
+        }
+        .form-container button:hover {
+            background-color: #165a8c;
+        }
+        .form-container .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #1e75ab;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .form-container .back-link:hover {
+            text-decoration: underline;
+        }
+        .back-button {
+            display: inline-block;
+            margin: 20px;
+            padding: 10px 20px;
+            background-color: #1e75ab;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .back-button:hover {
+            background-color: #165a8c;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Orientation Committee</h1>
+    </header>
+    <a href="{% url 'oc_president_page' %}" class="back-button">Back to President Page</a>
+    <div class="form-container">
+        <h2>Add Event</h2>
+        <form action="{% url 'add_event' %}" method="post">
+            {% csrf_token %}
+            <label for="OCEventName">Event Name</label>
+            <input type="text" id="OCEventName" name="OCEventName" value="" required>
+
+            <label for="OCEventDescription">Event Description</label>
+            <textarea id="OCEventDescription" name="OCEventDescription" required></textarea>
+
+            <label for="OCEventLocation">Event Location</label>
+            <input type="text" id="OCEventLocation" name="OCEventLocation" required>
+
+            <label for="OCStartDate">Event Start Date</label>
+            <input type="date" id="OCStartDate" name="OCStartDate" value="YYYY-MM-DD" required>
+
+            <label for="OCStartTime">Event Start Time</label>
+            <input type="time" id="OCStartTime" name="OCStartTime" value="00:00" required>
+
+            <label for="OCEndDate">Event End Date</label>
+            <input type="date" id="OCEndDate" name="OCEndDate" value="YYYY-MM-DD" required>
+
+            <label for="OCEndTime">Event End Time</label>
+            <input type="time" id="OCEndTime" name="OCEndTime" value="00:00" required>
+
+            <label for="OCNeeded">OC Needed</label>
+            <input type="number" id="OCNeeded" name="OCNeeded" value="0" required>
+
+            <button type="submit">Add Event</button>
+        </form>
+    </div>
+    <footer>
+        <p>&copy; 2024 Orientation Committee. All rights reserved.</p>
+    </footer>
+</body>
+</html>

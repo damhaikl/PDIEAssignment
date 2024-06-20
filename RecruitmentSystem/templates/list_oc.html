@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>List of OCs</title>
+</head>
+<body>
+    <h2>List of OCs</h2>
+    <ul>
+        {% for oc in ocs %}
+            <li>{{ oc.ocname }} - <a href="{% url 'update_oc' oc.pk %}">Update</a></li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

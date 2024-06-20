@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update Application Status</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header, footer {
+            background-color: #1e75ab;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        header h1, footer p {
+            margin: 0;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .container h1 {
+            text-align: center;
+            color: #1e75ab;
+            margin-bottom: 20px;
+        }
+        .container form {
+            margin-top: 20px;
+        }
+        .container form label {
+            display: block;
+            margin-top: 10px;
+            color: #555;
+        }
+        .container form input[type="text"],
+        .container form select {
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            color: #333;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .container form input[type="text"]:focus,
+        .container form select:focus {
+            border-color: #1e75ab;
+        }
+        .container form button {
+            width: 100%;
+            padding: 12px;
+            background-color: #1e75ab;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+            transition: background-color 0.2s;
+        }
+        .container form button:hover {
+            background-color: #165a8c;
+        }
+        .back-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #1e75ab;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Update Status for {{ application.student_name }}</h1>
+    </header>
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Save</button>
+        </form>
+        <a href="{% url 'application_list' %}" class="back-link">Back to application list</a>
+    </div>
+    <footer>
+        <p>&copy; 2024 Orientation Committee. All rights reserved.</p>
+    </footer>
+</body>
+</html>

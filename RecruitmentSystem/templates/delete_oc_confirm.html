@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Delete OC Member</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #1e75ab;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        footer {
+            background-color: #1e75ab;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            margin-top: auto;
+        }
+        .content {
+            padding: 20px;
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            text-align: center;
+        }
+        header h1, footer p {
+            margin: 0;
+        }
+        .form-container h2 {
+            color: #1e75ab;
+            margin-bottom: 20px;
+        }
+        .form-container p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+        .form-container button {
+            width: 100px;
+            padding: 10px;
+            background-color: #d9534f;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .form-container button:hover {
+            background-color: #c9302c;
+        }
+        .form-container a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #1e75ab;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .form-container a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Orientation Committee</h1>
+    </header>
+    <div class="content">
+        <div class="form-container">
+            <h2>Confirm Delete OC Member</h2>
+            <p>Are you sure you want to delete {{ oc.ocname }}?</p>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit">Yes, delete</button>
+                <a href="{% url 'delete_oc_list' %}">Cancel</a>
+            </form>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Orientation Committee. All rights reserved.</p>
+    </footer>
+</body>
+</html>

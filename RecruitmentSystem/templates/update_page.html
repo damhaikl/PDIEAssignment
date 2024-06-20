@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orientation Committee</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        header, footer {
+            background-color: #1e75ab;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+        header h1{
+            margin: 0;
+        }
+        article {
+            margin: 15% auto;
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 300px;
+            border-radius: 8px;
+        }
+        button {
+            width: 200px;
+            height: 40px;
+            border-radius: 5px;
+            background-color: #1e75ab;
+            color: white;
+            font-weight: bold;
+            border: none;
+            margin: 10px 0;
+        }
+        button:hover {
+            background-color: #165a8c;
+            cursor: pointer;
+        }
+        a {
+            color: #1e75ab;
+            text-decoration: none;
+        }
+        footer{
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Orientation Committee</h1>
+    </header>
+
+    <article>
+        <center>
+            <h2>Adding User</h2>
+            <!--Shows error but work as intended-->
+            <button onclick="location.href='{% url 'create_oc' %}'">Create new OC</button>
+            <!--Shows error but work as intended-->
+            <button onclick="location.href='{% url 'create_ocbureauleader' %}'">Create new OC Bureau Leader</button>
+            <br>-------------------------------------<br>
+
+            <h2>Update User</h2>
+            <!--Shows error but work as intended-->
+            <button onclick="location.href='{% url 'update_oc_list' %}'">UPDATE OC</button>
+            <!--Shows error but work as intended-->
+            <button onclick="location.href='{% url 'update_ocbureauleader_list' %}'">UPDATE OC Bureau Leader</button>
+            <br>-------------------------------------<br>
+
+            <h2>Delete user</h2>
+            <!--Shows error but work as intended-->
+            <button onclick="location.href='{% url 'delete_oc_list' %}'">Delete OC</button>
+            <!--Shows error but work as intended-->
+            <button onclick="location.href='{% url 'delete_ocbureauleader_list' %}'">Delete OC Bureau Leader</button>
+            
+        </center>
+        <br><br><a href="{% url 'oc_president_page' %}" class="button">Back to Main Page</a>
+    </article>
+    <footer>
+        <p>&copy; 2024 Orientation Committee. All rights reserved.</p>
+    </footer>
+</body>
+</html>

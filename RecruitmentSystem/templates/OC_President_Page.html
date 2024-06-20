@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Welcome, OC President</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      color: #333;
+    }
+    header, footer {
+      background-color: #1e75ab;
+      color: white;
+      text-align: center;
+      padding: 1em 0;
+    }
+    header h1, footer p {
+      margin: 0;
+    }
+    .sidenav {
+      background-color: white;
+      height: 100%;
+    }
+    .navbar-inverse {
+      background-color: #1e75ab;
+      border-color: #1e75ab;
+    }
+    .navbar-inverse .navbar-brand, .navbar-inverse .navbar-nav > li > a {
+      color: white;
+    }
+    .well {
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .table {
+      width: 100%;
+      margin-bottom: 1rem;
+      background-color: transparent;
+      border: 1px solid #ddd;
+    }
+    .table th,
+    .table td {
+      padding: 0.75rem;
+      vertical-align: top;
+      border-top: 1px solid #ddd;
+    }
+    .table thead th {
+      vertical-align: bottom;
+      border-bottom: 2px solid #ddd;
+    }
+    .table tbody + tbody {
+      border-top: 2px solid #ddd;
+    }
+    .table-striped tbody tr:nth-of-type(odd) {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+    .table-hover tbody tr:hover {
+      background-color: rgba(0, 0, 0, 0.075);
+    }
+  </style>
+</head>
+{% load static %}
+<body>
+
+<header>
+  <h1>Orientation Committee</h1>
+</header>
+
+<nav class="navbar navbar-inverse visible-xs">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <img src="{% static 'Logo OC.png' %}" alt="Logo" width="85px" height="80px">
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Dashboard</a></li>
+        <li><a href="{% url 'add_event' %}">Event</a></li>
+        <li><a href="{% url 'update_page' %}">Update</a></li>
+        <li><a href="{% url 'index' %}">Sign Out</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav hidden-xs">
+      <br>
+      <img src="{% static 'Logo OC.png' %}" alt="Logo" width="85px" height="80px">
+      <ul class="nav nav-pills nav-stacked">
+        <br>
+        <li class="active"><a href="#section1">Dashboard</a></li>
+        <li><a href="{% url 'add_event' %}">Event</a></li>
+        <li><a style="color: black;">Update</a></li>
+        <ul>
+          <li><a href="{% url 'application_list' %}">Add new OC</a></li>
+          <li><a href="{% url 'create_ocbureauleader' %}">Add new Bureau Leader</a></li>
+          <p>------------------</p>
+          <li><a href="{% url 'update_oc_list' %}">Update OC Members' Information</a></li>
+          <li><a href="{% url 'update_ocbureauleader_list' %}">Update Bureau Leaders' Information</a></li>
+          <p>------------------</p>
+          <li><a href="{% url 'delete_oc_list' %}">Delete OC members</a></li>
+          <li><a href="{% url 'delete_ocbureauleader_list' %}">Delete Bureau Leaders</a></li>
+        </ul>
+        <br><br><br><br><br>
+        <li><a href="{% url 'index' %}">Sign Out</a></li>
+      </ul><br>
+    </div>
+    <br>
+    
+    <div class="col-sm-9">
+      <div class="well">
+        <h4>Dashboard</h4>
+        <p>Welcome, OC President.</p>
+        <p>In this page, you have access to add a new event. You also have access to add new OC members and new OC Bureau Leaders as well as update and delete their profile</p>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="well">
+            <h4>Number of OC Member:</h4>
+            <h5>{{ oc_count }} OC members</h5> 
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="well">
+            <h4>Number of OC Bureau Leader:</h4>
+            <h5>{{ ocbureauleader_count }} OC Bureau Leader</h5>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="well">
+            <h4>OC Event Table</h4>
+            <div class="table-responsive">
+              <table class="table table-striped table-hover">
+                <thead>
+                  <tr>
+                    <th>Event Name</th>
+                    <th>Description</th>
+                    <th>Location</th>
+                    <th>Start Date</th>
+                    <th>Start Time</th>
+                    <th>End Date</th>
+                    <th>End Time</th>
+                    <th>OC Needed</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for event in events %}
+                  <tr>
+                    <td>{{ event.OCEventName }}</td>
+                    <td>{{ event.OCEventDescription|linebreaks }}</td>
+                    <td>{{ event.OCEventLocation }}</td>
+                    <td>{{ event.OCStartDate }}</td>
+                    <td>{{ event.OCStartTime }}</td>
+                    <td>{{ event.OCEndDate }}</td>
+                    <td>{{ event.OCEndTime }}</td>
+                    <td>{{ event.OCNeeded }}</td>
+                  </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
